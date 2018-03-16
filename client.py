@@ -70,6 +70,7 @@ while True:
         print("Received: " + str(echo))
 
 
+
 # closing connection to server
 print("bye felicia")
 serverFd.close()
