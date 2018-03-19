@@ -48,16 +48,17 @@ def startServer():
     # creating, settings opts and binding to socket
     serverFd = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serverFd.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    serverFd.bind(("127.0.0.1", port))
+    # serverFd.bind(("127.0.0.1", port))
+    serverFd.bind(("192.168.210.105", port))
 
     # start listening
-    print("server started successfully (\"CTRL + Break\" to stop)")
+    print("server started successfully on " +  "127.0.0.1" + str(port) + " (\"CTRL + Break\" to stop)")
     logServerStatus("======================================\r\nServer started at: " + currentTime() + "\r\n======================================\r\n")
     serverFd.listen(1) #todo research listen(value)
 
     # awaiting client connections FOR.EV.VER
     while True:
-        print("waiting for connection")
+        print("waiting for connection...")
         clientFd, addr = serverFd.accept()
         friendlyFd = getClientFD(str(clientFd))
 
